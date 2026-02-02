@@ -36,16 +36,8 @@ services:
     volumes:
       - ./backend:/app
       - /app/__pycache__
-    environment:
-      - DB_HOST=localhost
-      - DB_PORT=5432
-      - DB_USER=admin
-      - DB_PASSWORD=your_secure_password_here
-      - DB_NAME=postgres
-      - DEBUG=True
-      - APP_NAME=MealPrep API
-      - APP_VERSION=1.0.0
-      - ALLOWED_ORIGINS=http://localhost:3000,http://localhost:8000,http://localhost
+    env_file:
+      - ./backend/.env
     restart: unless-stopped
     network_mode: "host"
     depends_on:
