@@ -11,7 +11,7 @@ services:
       - pg_user
       - pg_pw
     volumes:
-      - ./data:/var/lib/postgresql/data
+      - ./database/data:/var/lib/postgresql/data
     command: >
       postgres -c log_statement=all
                -c log_connections=on
@@ -29,6 +29,6 @@ services:
 
 secrets:
   pg_user:
-    file: ./secrets/pg_user.txt
+    file: ./database/secrets/pg_user.txt
   pg_pw:
-    file: ./secrets/pg_pw.txt
+    file: ./database/secrets/pg_pw.txt
