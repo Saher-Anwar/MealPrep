@@ -1,0 +1,9 @@
+# PostgreSQL Docker volumes
+data/
+logs/
+
+# Secrets - NEVER commit passwords!
+secrets/
+
+# SSL Certificates - NEVER commit private keys!
+certs/
