@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from core.config import get_settings
 from core.database import init_db
 from api.router import api_router
+import models  # noqa: F401 - ensure all models are registered with Base
 
 settings = get_settings()
 
