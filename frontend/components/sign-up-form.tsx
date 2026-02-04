@@ -16,7 +16,12 @@ import * as React from 'react';
 import { Pressable, TextInput, View } from 'react-native';
 
 export function SignUpForm() {
+  const emailInputRef = React.useRef<TextInput>(null);
   const passwordInputRef = React.useRef<TextInput>(null);
+
+  function onNameSubmitEditing() {
+    emailInputRef.current?.focus();
+  }
 
   function onEmailSubmitEditing() {
     passwordInputRef.current?.focus();
@@ -38,8 +43,21 @@ export function SignUpForm() {
         <CardContent className="gap-6">
           <View className="gap-6">
             <View className="gap-1.5">
+              <Label htmlFor="name">Name</Label>
+              <Input
+                id="name"
+                placeholder="John Doe"
+                autoCapitalize="words"
+                autoComplete="name"
+                onSubmitEditing={onNameSubmitEditing}
+                returnKeyType="next"
+                submitBehavior="submit"
+              />
+            </View>
+            <View className="gap-1.5">
               <Label htmlFor="email">Email</Label>
               <Input
+                ref={emailInputRef}
                 id="email"
                 placeholder="m@example.com"
                 keyboardType="email-address"
@@ -75,12 +93,6 @@ export function SignUpForm() {
               <Text className="text-sm underline underline-offset-4">Sign in</Text>
             </Pressable>
           </Text>
-          <View className="flex-row items-center">
-            <Separator className="flex-1" />
-            <Text className="text-muted-foreground px-4 text-sm">or</Text>
-            <Separator className="flex-1" />
-          </View>
-          <SocialConnections />
         </CardContent>
       </Card>
     </View>
