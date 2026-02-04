@@ -1,9 +1,10 @@
-# PostgreSQL Docker volumes
-data/
-logs/
+# Environment variables - NEVER commit secrets!
+.env
+.env.*
 
-# Secrets - NEVER commit passwords!
-secrets/
-
-# SSL Certificates - NEVER commit private keys!
-certs/
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python

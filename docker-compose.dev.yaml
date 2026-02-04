@@ -11,7 +11,7 @@ services:
       - pg_user
       - pg_pw
     volumes:
-      - ./data:/var/lib/postgresql/data
+      - ./database/data:/var/lib/postgresql/data
     command: >
       postgres -c log_statement=all
                -c log_connections=on
@@ -27,8 +27,31 @@ services:
       retries: 10
       start_period: 30s
 
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: mealprep-backend
+    hostname: backend
+    volumes:
+      - ./backend:/app
+      - /app/__pycache__
+    env_file:
+      - ./backend/.env
+    restart: unless-stopped
+    network_mode: "host"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: curl -f http://localhost:8000/api/health || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
 secrets:
   pg_user:
-    file: ./secrets/pg_user.txt
+    file: ./database/secrets/pg_user.txt
   pg_pw:
-    file: ./secrets/pg_pw.txt
+    file: ./database/secrets/pg_pw.txt

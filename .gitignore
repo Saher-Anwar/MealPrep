@@ -1,0 +1,5 @@
+# Database files - PostgreSQL data, secrets, logs, and certs
+database/data/
+database/logs/
+database/secrets/
+database/certs/
