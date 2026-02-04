@@ -1,21 +1,5 @@
-import { SignInForm } from '@/components/sign-in-form';
-import { Stack } from 'expo-router';
-import { View } from 'react-native';
+import { Redirect } from 'expo-router';
 
-const SCREEN_OPTIONS = {
-  title: 'Sign In',
-  headerShown: false,
-};
-
-export default function SignInScreen() {
-  return (
-    <>
-      <Stack.Screen options={SCREEN_OPTIONS} />
-      <View className="flex-1 items-center justify-center p-4">
-        <View className="w-full max-w-sm">
-          <SignInForm />
-        </View>
-      </View>
-    </>
-  );
+export default function RootScreen() {
+  return <Redirect href="/auth" />;
 }
