@@ -72,8 +72,8 @@ export function SignUpForm() {
 
       console.log('Sign up result:', { isSignUpComplete, userId, nextStep });
 
-      // Navigate to sign-in screen - user will verify email via link sent to their inbox
-      router.push('/auth');
+      // Navigate to verification screen where user enters the code sent to their email
+      router.push(`/auth/verify-email?email=${encodeURIComponent(email)}`);
     } catch (err: any) {
       console.error('Sign up error:', err);
 
