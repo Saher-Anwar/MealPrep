@@ -1,11 +1,15 @@
 import '@/global.css';
 
+import { configureAmplify } from '@/lib/amplify-config';
 import { NAV_THEME } from '@/lib/theme';
 import { ThemeProvider } from '@react-navigation/native';
 import { PortalHost } from '@rn-primitives/portal';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useColorScheme } from 'nativewind';
+
+// Configure AWS Amplify
+configureAmplify();
 
 export {
   // Catch any errors thrown by the Layout component.
